@@ -18,6 +18,11 @@ public class LinkedListMain {
         linkedList2.append(70);
 
         linkedList2.display();
+        System.out.println();
+
+        System.out.println("Element popped from head => " + linkedList2.pop());
+        linkedList2.display();
+
     }
 
     public static class LinkedList<E> {
@@ -57,6 +62,11 @@ public class LinkedListMain {
                 tail.setNext(newNode);
                 tail = newNode;
             }
+        }
+        public E pop() {
+            E temp = head.getData();
+            head = head.getNext();
+            return temp;
         }
 
         public static class Node<E> {
