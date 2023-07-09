@@ -10,20 +10,27 @@ public class LinkedListMain {
         linkedList1.add(70);
 
         linkedList1.display();
+        System.out.println();
+
+        LinkedList<Integer> linkedList2 = new LinkedList<>();
+        linkedList2.append(56);
+        linkedList2.append(30);
+        linkedList2.append(70);
+
+        linkedList2.display();
     }
 
     public static class LinkedList<E> {
-        Node<E> head ;
+        Node<E> head;
 
-        Node<E> tail ;
+        Node<E> tail;
 
-        public void add(E data){
+        public void add(E data) {
             Node<E> newNode = new Node<>(data);
-            if(head == null){
+            if (head == null) {
                 head = newNode;
                 tail = newNode;
-            }
-            else {
+            } else {
                 newNode.setNext(head);
                 head = newNode;
             }
@@ -31,42 +38,54 @@ public class LinkedListMain {
 
         public void display() {
             Node<E> temp = head;
-            if(head == null){
+            if (head == null) {
                 System.out.println("Linked List is empty");
             }
-            while(temp != null){
+            while (temp != null) {
                 System.out.print(temp.getData() + " ");
                 temp = temp.getNext();
             }
-        }
-    }
 
-    public static class Node<E> {
-        private E data ;
-
-        private Node<E> next ;
-
-        public Node() {
         }
 
-        public Node(E data) {
-            this.data = data;
+        public void append(E data) {
+            Node<E> newNode = new Node<>(data);
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.setNext(newNode);
+                tail = newNode;
+            }
         }
 
-        public E getData() {
-            return data;
-        }
+        public static class Node<E> {
+            private E data;
 
-        public void setData(E data) {
-            this.data = data;
-        }
+            private Node<E> next;
 
-        public Node<E> getNext() {
-            return next;
-        }
+            public Node() {
+            }
 
-        public void setNext(Node<E> next) {
-            this.next = next;
+            public Node(E data) {
+                this.data = data;
+            }
+
+            public E getData() {
+                return data;
+            }
+
+            public void setData(E data) {
+                this.data = data;
+            }
+
+            public Node<E> getNext() {
+                return next;
+            }
+
+            public void setNext(Node<E> next) {
+                this.next = next;
+            }
         }
     }
 }
