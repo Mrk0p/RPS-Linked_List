@@ -2,7 +2,6 @@ package com.bridgelabz.linked_list;
 
 public class LinkedListMain {
     public static void main(String[] args) {
-
         LinkedList<Integer> linkedList1 = new LinkedList<>();
 
         linkedList1.add(56);
@@ -52,6 +51,16 @@ public class LinkedListMain {
         else {
             System.out.println("Invalid insertion ");
         }
+        System.out.println();
+
+        if (linkedList1.deleteValue(45)){
+            System.out.println("Value can be deleted");
+            linkedList1.display();
+        }
+        else {
+            System.out.println("Cannot delete this value ");
+        }
+
 
     }
 
@@ -125,6 +134,21 @@ public class LinkedListMain {
                 search(searchData).setNext(newNode);
                 newNode.setNext(nextNode);
                 return true;
+            }
+            return false;
+        }
+        public boolean deleteValue(E searchData) {
+            Node<E> deletingNode = search(searchData);
+            Node<E> temp = head;
+            if(search(searchData) != null) {
+                while (temp != null) {
+                    if (temp.getNext().equals(deletingNode)) {
+                        temp.setNext(deletingNode.getNext());
+                        deletingNode.setNext(null);
+                        return true;
+                    }
+                    temp = temp.getNext();
+                }
             }
             return false;
         }
